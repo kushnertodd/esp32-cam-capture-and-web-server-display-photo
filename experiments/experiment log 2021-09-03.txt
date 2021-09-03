@@ -1,0 +1,152 @@
+Experiments
+2021-09-03
+
+ESP32-CAM camera calibration
+
+grid:
+
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+
+12 squares = 16 cm
+
+IP:
+
+http://192.168.1.243
+
+project dir:
+$DROPBOX/software/projects/toddkushnerllc
+
+experiment dir:
+arduino/esp32-cam/examples/expermiments
+arduino/esp32-cam/projects/esp32-cam-capture-and-web-server-display-photo/experiments
+
+capture script:
+
+Photo command:
+
+http://192.168.1.243/saved-photo
+
+$ cat capture.sh
+#!/usr/bin/bash
+echo curl http://192.168.1.243/capture
+curl http://192.168.1.243/capture
+echo
+
+
+$ cat save.sh
+#!/usr/bin/bash
+if [ -z "$1" ] ; then
+  echo usage $0 image
+else
+  echo curl http://192.168.1.243/saved-photo  \>$1
+  curl http://192.168.1.243/saved-photo  >$1
+  echo
+fi
+
+$ ./capture.sh
+usage ./capture.sh image
+
++------------
+|  ^
+|  |
+| 12.8 cm
+|  |
+|  v
++------------
+
+$ ./capture.sh 12.8-cm.jpg
+
+# 12.8 cm stand 
+./capture.sh
+./save.sh 12.8-cm-high.jpg
+
+experiment 1: 12.8 cm + 2.5 cm box
+
+$ ./save-12.8+2.5-cm-high-jpg.sh
+./capture.sh
+curl http://192.168.1.243/capture
+Taking Photo
+Fri 03 Sep 2021 11:03:46 AM MDT: sleeping
+Fri 03 Sep 2021 11:03:51 AM MDT: awake
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   98k  100   98k    0     0   118k      0 --:--:-- --:--:-- --:--:--  118k
+
+$ cat ./save-12.8+2.5-cm-high-jpg.sh
+#!/usr/bin/bash
+echo ./capture.sh
+./capture.sh
+echo `date`: sleeping
+sleep 5
+echo `date`: awake
+echo curl http://192.168.1.243/saved-photo >12.8+2.5-cm-high.jpg
+curl http://192.168.1.243/saved-photo >12.8+2.5-cm-high.jpg
+echo
+
+cp 12.8-cm-high.jpg 12.8-cm-high.original.jpg
+cp 12.8+2.5-cm-high.jpg 12.8+2.5-cm-high.original.jpg
+
+experiment 2: 12.8 cm
+
+$ ./save-12.8-cm-high-jpg.sh
+./capture.sh
+curl http://192.168.1.243/capture
+Taking Photo
+Fri 03 Sep 2021 11:03:46 AM MDT: sleeping
+Fri 03 Sep 2021 11:03:51 AM MDT: awake
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   98k  100   98k    0     0   118k      0 --:--:-- --:--:-- --:--:--  118k
+
+$ cat ./save-12.8+2.5-cm-high-jpg.sh
+#!/usr/bin/bash
+echo ./capture.sh
+./capture.sh
+echo `date`: sleeping
+sleep 5
+echo `date`: awake
+echo curl http://192.168.1.243/saved-photo >12.8+2.5-cm-high.jpg
+curl http://192.168.1.243/saved-photo >12.8+2.5-cm-high.jpg
+echo
+
+cp 12.8-cm-high.jpg 12.8-cm-high.original.jpg
+cp 12.8+2.5-cm-high.jpg 12.8+2.5-cm-high.original.jpg
+
+# measure pixels
+12.8-cm-high.jpg
+12.8+2.5-cm-high.jpg
+
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      |  |  |  |  |  |  |  |  |  |  |  |  |
+      +--+--+--+--+--+--+--+--+--+--+--+--+
+      

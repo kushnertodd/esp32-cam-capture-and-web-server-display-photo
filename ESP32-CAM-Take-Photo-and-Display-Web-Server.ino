@@ -1,3 +1,4 @@
+
 /*********
   Rui Santos
   Complete project details at https://RandomNerdTutorials.com/esp32-cam-take-photo-display-web-server/
@@ -25,8 +26,8 @@
 #include <FS.h>
 
 // Replace with your network credentials
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+const char* ssid = "missing...";
+const char* password = "fastnetwork";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
