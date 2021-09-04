@@ -1,0 +1,23 @@
+340408762 212024 ./calibration/12.8-cm-high.measured.jpg
+
+511080457 100986 ./calibration/12.8+2.5-cm-high.jpg
+511080457 100986 ./calibration/12.8+2.5-cm-high.original.jpg
+511080457 100986 ./save/12.8+2.5-cm-high.jpg
+511080457 100986 ./save/12.8+2.5-cm-high.original.jpg
+
+675753894 103202 ./calibration/12.8-cm-high.jpg
+675753894 103202 ./calibration/12.8-cm-high.original.jpg
+675753894 103202 ./save/12.8-cm-high.jpg
+675753894 103202 ./save/12.8-cm-high.original.jpg
+
+1761250625 142565 ./12.8-cm-high.jpg
+1761250625 142565 ./12.8-cm-high.original.jpg
+1761250625 142565 ./keyboard/12.8-cm-high.jpg
+1761250625 142565 ./keyboard/12.8-cm-high.original.jpg
+
+2662924578 206939 ./calibration/12.8+2.5-cm-high.measured.jpg
+
+2815589465 150725 ./12.8+2.5-cm-high.jpg
+2815589465 150725 ./12.8+2.5-cm-high.original.jpg
+2815589465 150725 ./keyboard/12.8+2.5-cm-high.jpg
+2815589465 150725 ./keyboard/12.8+2.5-cm-high.original.jpg
